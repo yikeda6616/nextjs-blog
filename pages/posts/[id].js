@@ -19,7 +19,7 @@ export async function getStaticPaths() {
   const paths = getAllPostIds()
   return {
     paths,
-    fallback: false
+    fallback: false // any paths not returned by getStaticPaths will result in a 404 page.
   }
 }
 
