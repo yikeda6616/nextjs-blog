@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Date from '../../components/date'
+import utilStyles from '../../styles/utils.module.css'
 
 // The post page is now using the getPostData function in getStaticProps to get the post data and return it as props.
 export async function getStaticProps({ params }) {
@@ -23,18 +24,19 @@ export async function getStaticPaths() {
 }
 
 export default function Post({ postData }) {
+  const { title, date, contentHtml } = postData;
   return (
     <Layout>
       <Head>
-        <title>{postData.title}</title>
+        <title>{title}</title>
       </Head>
-      {postData.title}
-      <br />
-      {postData.id}
-      <br />
-      <Date dateString={postData.date} />
-      <br />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      <article>
+        <h1 className={utilStyles.headingXl}>{title}</h1>
+        <div className={utilStyles.lightText}>
+          <Date dateString={date} />
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      </article>
     </Layout>
   )
 }
