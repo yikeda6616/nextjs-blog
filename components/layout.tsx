@@ -3,11 +3,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
+import { ReactNode } from 'react'
 
 const name = 'Yasushi Ikeda'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Next.js Blog'
 
-export default function Layout({ children, home }) {
+type Props = {
+  children: ReactNode;
+  home?: boolean;
+}
+
+export default function Layout({ children, home=false }: Props) {
   return (
     <div className={styles.container}>
       <Head>
