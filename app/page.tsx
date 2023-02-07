@@ -1,4 +1,4 @@
-import HomePage from './HomePage'
+import Home from './Home'
 import { getSortedPostsData } from '../lib/posts'
 
 async function getAllPosts() {
@@ -9,6 +9,6 @@ async function getAllPosts() {
 export default async function Page() {
   const allPostsData = await getAllPosts();
   return (
-    <HomePage allPostsData={allPostsData} />
+    <Home allPostsData={allPostsData} />
   )
 }

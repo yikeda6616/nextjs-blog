@@ -14,7 +14,7 @@ type Props = {
     id: string;
   }[];
 };
-export default function HomePage({ allPostsData }: Props) {
+export default function Home({ allPostsData }: Props) {
   return (
     <Layout>
       <div>
