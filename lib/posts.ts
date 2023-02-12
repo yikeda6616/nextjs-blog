@@ -42,29 +42,23 @@ export function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory)
 
   // Returns an array that looks like this:
-  // Each object must have the params key and contain an object with the id key (because we’re using [id] in the file name).
+  // Each object must have the slug key (because we’re using [id] in the file name).
   // [
   //   {
-  //     params: {
-  //       id: 'ssg-ssr'
-  //     }
+  //     id: 'ssg-ssr'
   //   },
   //   {
-  //     params: {
-  //       id: 'pre-rendering'
-  //     }
+  //     id: 'pre-rendering'
   //   }
   // ]
   return fileNames.map(fileName => {
-    return {
-      params: {
-        id: fileName.replace(/\.md$/, '')
-      }
-    }
+    return {id: fileName.replace(/\.md$/, '')}
   })
 }
 
-export async function getPostData(id) {
+type Post = {id: any, contentHtml: string,date?:Date, title?: string}
+
+export async function getPostData(id):Promise<Post> {
   const fullPath = path.join(postsDirectory, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
