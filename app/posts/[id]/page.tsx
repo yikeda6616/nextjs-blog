@@ -1,4 +1,4 @@
-import PostPage from "./PostPage";
+import Post from "./Post";
 import { getAllPostIds, getPostData } from "../../../lib/posts";
 
 export const dynamicParams = true;
@@ -12,7 +12,7 @@ async function getPost(id: string) {
   return res;
 }
 
-export default async function Post({ params }) {
-  const post = await getPost(params.id);
-  return <PostPage postData={post} />;
+export default async function Page({ params }: { params: { id: string } }) {
+  const postData = await getPost(params.id);
+  return <Post postData={postData} />;
 }

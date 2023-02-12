@@ -3,7 +3,7 @@ import Date from "../../../components/date";
 import Layout from "../../../components/layout";
 import utilStyles from "../../../styles/utils.module.css";
 
-export default function PostPage({ postData }) {
+export default function Post({ postData }) {
   const { title, date, contentHtml } = postData;
 
   return (
